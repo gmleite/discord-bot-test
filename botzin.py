@@ -9,7 +9,7 @@ chvs = ['HOA', 'MOTS', 'PF', 'TOP', 'DOS', 'SOA', 'NW', 'SD']
 
 
 ####################SALVAR AS CHAVES QDO EU DESLIGO O PC XD?####################
-def json_chvs(chaves_disponiveis, caminho):
+def json_chvs(chaves_disponiveis, caminho='savechaves.json'):
     with open(caminho, 'w') as arquivo:
         json.dump(chaves_disponiveis, arquivo, default=_chvs_para_json)
         
@@ -17,7 +17,7 @@ def _chvs_para_json(chaves_disponiveis):
     return chaves_disponiveis.__dict__
 
 #####puxa as chaves do arquivo json
-def chvs_json(caminho):
+def chvs_json(caminho='savechaves.json'):
     chaves_disponiveis = {}
     with open(caminho) as arquivo:
         chaves_disponiveis = json.load(arquivo)
@@ -26,7 +26,7 @@ def chvs_json(caminho):
 
 ####retornar as chaves qdo ligar o bot de novo
 chaves_disponiveis = {}
-chaves_disponiveis = chvs_json('C:\\Users\\gio\\PycharmProjects\\botzinbrb\\DISCORDBOT\\savechaves.json')
+chaves_disponiveis = chvs_json()
 
 
 @client.event
@@ -43,7 +43,7 @@ async def ping(ctx):
 async def addplayer(ctx, player, chave):
     player = player.lower()
     chaves_disponiveis.update({player: chave})
-    json_chvs(chaves_disponiveis ,'C:\\Users\\gio\\PycharmProjects\\botzinbrb\\DISCORDBOT\\savechaves.json')
+    json_chvs(chaves_disponiveis)
     await ctx.send(f'{player.capitalize()} adicionado com chave {chave.capitalize()}', delete_after=5)
     
  ###capitalize é só visual pra mensagem###
@@ -54,7 +54,7 @@ async def addplayer(ctx, player, chave):
 async def attplayer(ctx, player, chave):
     player = player.lower()
     chaves_disponiveis.update({player: chave})
-    json_chvs(chaves_disponiveis ,'C:\\Users\\gio\\PycharmProjects\\botzinbrb\\DISCORDBOT\\savechaves.json')
+    json_chvs(chaves_disponiveis)
     await ctx.send(f'Chave atualizada para {player.capitalize()}, {chave.capitalize()}.', delete_after=5)
  ###json_chvs atualiza o arquivo pra qql mudança nas chaves
 
@@ -81,13 +81,14 @@ async def clear(ctx, amount=1):
 
 @client.command()
 async def removerplayer(ctx, player):
+    json_chvs(chaves_disponiveis, 'savekeysbackup.json')
     if player == 'all':
         chaves_disponiveis.clear
-        json_chvs(chaves_disponiveis ,'C:\\Users\\gio\\PycharmProjects\\botzinbrb\\DISCORDBOT\\savechaves.json')
+        json_chvs(chaves_disponiveis)
         await ctx.send(f'Todos os players removidos.', delete_after=5)
     else:
         chaves_disponiveis.pop(player)
-        json_chvs(chaves_disponiveis ,'C:\\Users\\gio\\PycharmProjects\\botzinbrb\\DISCORDBOT\\savechaves.json')
+        json_chvs(chaves_disponiveis)
         await ctx.send(f'{player.capitalize()} removido.', delete_after=5)
 ### remove player do bot atual e do arquivo de save
 
@@ -110,7 +111,7 @@ async def on_message(message):
     ### deleta a mensagem de comando dps de executar ele 
 
 
-client.run('ODEzNTE4NDUyMDQ4Mzk2MzE4.YDQeGQ.rCz4UilXb7G1zcUTFeSTNYZ4-S0')
+client.run('ODEzNTE4NDUyMDQ4Mzk2MzE4.YDQeGQ.nTooRVj_Tjq8MONrYBVUqdK7Yqg')
 
 
 
