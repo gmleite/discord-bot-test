@@ -1,0 +1,4 @@
+2021-06-16 15:00:12,532 [WARNING] PyNaCl is not installed, voice will NOT be supported
+2021-06-16 15:00:12,535 [INFO] logging in using static token
+2021-06-16 15:00:13,253 [INFO] Shard ID None has sent the IDENTIFY payload.
+2021-06-16 15:00:13,480 [INFO] Shard ID None has connected to Gateway: ["gateway-prd-main-4sd5",{"micros":69810,"calls":["discord-sessions-blue-prd-2-121",{"micros":66025,"calls":["start_session",{"micros":31183,"calls":["api-prd-main-zt4m",{"micros":27988,"calls":["get_user",{"micros":2856},"add_authorized_ip",{"micros":1534},"get_guilds",{"micros":6687},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":29874,"calls":[]}]}]}] (Session ID: 499ef15aabac9239006d2de46c8174cc).
