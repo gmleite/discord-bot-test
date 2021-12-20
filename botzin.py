@@ -17,7 +17,6 @@ try:
     chvs = ['HOA', 'MOTS', 'PF', 'TOP', 'DOS', 'SOA', 'NW', 'SD']
 
 
-    ####################SALVAR AS CHAVES QDO EU DESLIGO O PC XD?####################
     def json_chvs(chaves_disponiveis, caminho='savechaves.json'):
         with open(caminho, 'w') as arquivo:
             json.dump(chaves_disponiveis, arquivo, default=_chvs_para_json)
